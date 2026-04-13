@@ -5,9 +5,8 @@ import os
 
 load_dotenv()
 
-client = TavilyClient(api_key=os.getenv("TAVILY_API_KEY"))
-
 def searcher_agent(state: AgentState) -> dict:
+    client = TavilyClient(api_key=os.getenv("TAVILY_API_KEY"))
     results = []
 
     for sub_question in state["sub_questions"]:
