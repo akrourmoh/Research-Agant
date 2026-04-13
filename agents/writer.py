@@ -9,11 +9,16 @@ load_dotenv()
 def writer_agent(state: AgentState) -> dict:
     llm = ChatGoogleGenerativeAI(model="gemini-3-flash-preview", temperature=0, google_api_key=os.getenv("GOOGLE_API_KEY"))
     prompt = ChatPromptTemplate.from_messages([
-        ("system", """You are a research writer.
-        Your job is to write a comprehensive, well-structured answer to the question.
-        Use the search results provided as your source of information.
-        Structure your answer with clear sections and reference sources where relevant.
-        If you received a critique from a previous review, use it to improve your answer."""),
+        ("system", """You are a concise research writer.
+        Your job is to write a clear, focused answer to the question.
+        Rules:
+        - Answer only what was asked — do not add extra topics or tangents
+        - Keep the answer between 150 and 300 words maximum
+        - Use 2 to 3 sections with short titles
+        - Each section should have 2 to 3 sentences maximum
+        - No long lists — maximum 3 bullet points per section
+        - End with 2 to 3 source URLs only, no descriptions
+        - If you received a critique, use it to improve but stay concise"""),
         ("human", """Question: {question}
 
         Search Results:
