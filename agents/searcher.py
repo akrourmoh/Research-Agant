@@ -12,12 +12,13 @@ def searcher_agent(state: AgentState) -> dict:
     for sub_question in state["sub_questions"]:
         response = client.search(
             query=sub_question,
-            max_results=3,
-            search_depth="advanced"
+            max_results=2,
+            search_depth="basic"
         )
 
         for item in response["results"]:
-            results.append(f"Source: {item['url']}\n{item['content']}")
+            content = item['content'][:500]
+            results.append(f"Source: {item['url']}\n{content}")
 
     return {"search_results": results}
 

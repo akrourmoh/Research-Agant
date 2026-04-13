@@ -1,9 +1,13 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from graph.workflow import build_graph
 import os
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 app = FastAPI(title="Research Agent API")
 
@@ -40,13 +44,16 @@ async def research(request: QuestionRequest):
         "final_answer": ""
     }
 
-    result = await graph.ainvoke(initial_state)
-
-    return ResearchResponse(
-        question=request.question,
-        answer=result["final_answer"],
-        revisions=result["revision_count"]
-    )
+    try:
+        result = await graph.ainvoke(initial_state)
+        return ResearchResponse(
+            question=request.question,
+            answer=result["final_answer"],
+            revisions=result["revision_count"]
+        )
+    except Exception as e:
+        logger.error(f"Error during research: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.get("/health")

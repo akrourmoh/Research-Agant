@@ -10,12 +10,11 @@ def planner_agent(state: AgentState) -> dict:
     llm = ChatGoogleGenerativeAI(model="gemini-3-flash-preview", temperature=0, google_api_key=os.getenv("GOOGLE_API_KEY"))
     prompt = ChatPromptTemplate.from_messages([
         ("system", """You are a research planner.
-        Your job is to take the user's question and break it down into exactly 3 focused sub-questions.
+        Your job is to take the user's question and break it down into exactly 2 focused sub-questions.
         These sub-questions together must fully cover the original question.
         Return only a numbered list like this:
         1. first sub-question
         2. second sub-question
-        3. third sub-question
         Nothing else."""),
         ("human", "{question}")
     ])

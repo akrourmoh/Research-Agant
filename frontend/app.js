@@ -31,7 +31,9 @@ async function submitQuestion() {
         });
 
         if (!response.ok) {
-            throw new Error("Server error: " + response.status);
+            const errorData = await response.json().catch(() => ({}));
+            const message = errorData.detail || "Server error: " + response.status;
+            throw new Error(message);
         }
 
         const data = await response.json();
