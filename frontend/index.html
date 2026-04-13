@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Research Agent</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔍</text></svg>">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>Research Agent</h1>
+            <p>Ask any question. The AI will search, write, and review the answer for you.</p>
+        </div>
+
+        <div class="search-box">
+            <textarea id="question-input" placeholder="Type your research question here..."></textarea>
+            <button id="submit-btn" onclick="submitQuestion()">Research</button>
+        </div>
+
+        <div class="agents-status" id="agents-status" style="display:none;">
+            <div class="agent-step" id="step-planner">
+                <div class="step-icon">🧠</div>
+                <div class="step-info">
+                    <span class="step-name">Planner</span>
+                    <span class="step-desc">Breaking down your question...</span>
+                </div>
+                <div class="step-status" id="status-planner">waiting</div>
+            </div>
+            <div class="agent-step" id="step-searcher">
+                <div class="step-icon">🔍</div>
+                <div class="step-info">
+                    <span class="step-name">Searcher</span>
+                    <span class="step-desc">Searching the web...</span>
+                </div>
+                <div class="step-status" id="status-searcher">waiting</div>
+            </div>
+            <div class="agent-step" id="step-writer">
+                <div class="step-icon">✍️</div>
+                <div class="step-info">
+                    <span class="step-name">Writer</span>
+                    <span class="step-desc">Writing the answer...</span>
+                </div>
+                <div class="step-status" id="status-writer">waiting</div>
+            </div>
+            <div class="agent-step" id="step-critic">
+                <div class="step-icon">✅</div>
+                <div class="step-info">
+                    <span class="step-name">Critic</span>
+                    <span class="step-desc">Reviewing the answer...</span>
+                </div>
+                <div class="step-status" id="status-critic">waiting</div>
+            </div>
+        </div>
+
+        <div class="result-box" id="result-box" style="display:none;">
+            <div class="result-header">
+                <h2>Research Report</h2>
+                <span id="revisions-badge"></span>
+            </div>
+            <div class="result-question" id="result-question"></div>
+            <div class="result-answer" id="result-answer"></div>
+        </div>
+
+        <div class="error-box" id="error-box" style="display:none;">
+            <p id="error-message"></p>
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+# Environment variables - never push this
+.env
+
+# Virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# VS Code
+.vscode/
+
+# Python egg
+*.egg-info/
+dist/
+build/
+
+# Logs
+*.log
