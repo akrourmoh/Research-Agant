@@ -1,4 +1,4 @@
-const API_URL = "http://127.0.0.1:8000/research";
+const API_URL = window.location.origin + "/research";
 
 async function submitQuestion() {
     const question = document.getElementById("question-input").value.trim();
