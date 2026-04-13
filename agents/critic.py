@@ -6,9 +6,8 @@ import os
 
 load_dotenv()
 
-llm = ChatGoogleGenerativeAI(model="gemini-3-flash-preview", temperature=0, google_api_key=os.getenv("GOOGLE_API_KEY"))
-
 def critic_agent(state: AgentState) -> dict:
+    llm = ChatGoogleGenerativeAI(model="gemini-3-flash-preview", temperature=0, google_api_key=os.getenv("GOOGLE_API_KEY"))
     prompt = ChatPromptTemplate.from_messages([
         ("system", """You are a strict quality reviewer.
         Evaluate the answer based on these 3 criteria:

@@ -6,9 +6,8 @@ import os
 
 load_dotenv()
 
-llm = ChatGoogleGenerativeAI(model="gemini-3-flash-preview", temperature=0, google_api_key=os.getenv("GOOGLE_API_KEY"))
-
 def planner_agent(state: AgentState) -> dict:
+    llm = ChatGoogleGenerativeAI(model="gemini-3-flash-preview", temperature=0, google_api_key=os.getenv("GOOGLE_API_KEY"))
     prompt = ChatPromptTemplate.from_messages([
         ("system", """You are a research planner.
         Your job is to take the user's question and break it down into exactly 3 focused sub-questions.
