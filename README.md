@@ -2,6 +2,8 @@
 
 An autonomous multi-agent AI system that researches any topic by searching the live web, writing a structured answer, and self-correcting until the quality is satisfactory.
 
+🚀 **Live Demo:** [research-agant-production.up.railway.app](https://research-agant-production.up.railway.app)
+
 ---
 
 ## How it works
@@ -11,9 +13,9 @@ You submit a question. The system does everything else automatically:
 ```
 User Question
       ↓
-[Planner Agent]   → breaks the question into 3 focused sub-questions
+[Planner Agent]   → breaks the question into 2 focused sub-questions
       ↓
-[Searcher Agent]  → searches the live web for each sub-question (up to 9 sources)
+[Searcher Agent]  → searches the live web for each sub-question (up to 4 sources)
       ↓
 [Writer Agent]    → synthesizes a structured, sourced answer
       ↓
@@ -72,8 +74,8 @@ research-agent/
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/research-agent.git
-cd research-agent
+git clone https://github.com/akrourmoh/Research-Agant.git
+cd Research-Agant
 ```
 
 ### 2. Create a virtual environment
